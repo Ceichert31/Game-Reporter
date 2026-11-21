@@ -9,35 +9,8 @@ Game Reporter is meant to be easy for anyone to set up. If you run into any issu
 2. Setup Render and connect repo
 3. Set Discord webhook URL in environment file
 
-### Hosting
-
-Game-Reporter requires a hosting service to run the API. I recommend [Render](https://render.com/) as it has a free tier. The free tier does have a slow startup time, so bug reports may take about a minute to come in. 
-
-1. Fork this repository so you have your own version of it.
-<img width="928" height="94" alt="image" src="https://github.com/user-attachments/assets/a2ede2e4-1e02-4c15-8dd8-7c8995cc6d3e" />
-
-2. Open [Render](https://render.com/) and click **New**, then select **Web Service**
-<img width="1029" height="395" alt="image" src="https://github.com/user-attachments/assets/a1c399eb-62ac-4e73-bf3a-867bd868a2e6" />
-<img width="1034" height="399" alt="image" src="https://github.com/user-attachments/assets/09529a96-6eb5-4562-88e9-c7449ede5cf9" />
-
-3. Choose **Public Repository**, paste in your forked repository, and then click **Connect**
-<img width="811" height="165" alt="image" src="https://github.com/user-attachments/assets/0fc48f16-f7d5-4162-a36f-2531ad8c17e6" />
-
-4. Then set the **Language** as **Docker**, and the **Root Directory** as **bugreport/**
-<img width="1228" height="382" alt="image" src="https://github.com/user-attachments/assets/b20c3b0e-0c4f-4fcf-98e0-0819450e00ef" />
-
-5. Select the free plan
-<img width="1208" height="311" alt="image" src="https://github.com/user-attachments/assets/d9b27471-37cd-4550-97bf-435eb65a8094" />
-
-6. For your environment variables, add two entries. One is the Discord Webhook URL. The other is the fallback port. Make sure to copy the key names in the image.
-<img width="926" height="126" alt="image" src="https://github.com/user-attachments/assets/a6585949-2e06-47de-9c6c-ae9fef85a3cb" />
-
-7. Now you can click **Deploy** at the bottom of the screen, and then navigate to your dashboard.
-
-8. Your link to your API will be here on the dashboard. This is what allows you to send POST Requests.
-<img width="438" height="158" alt="image" src="https://github.com/user-attachments/assets/388931f4-b031-48b2-82fd-367dfc411ffb" />
-
-
+## Hosting
+[Hosting Page](https://github.com/Ceichert31/Game-Reporter/wiki/Hosting)
 
 ## Implementation
 ### C# Implementation

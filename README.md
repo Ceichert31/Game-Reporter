@@ -15,7 +15,10 @@ Game Reporter is meant to be easy for anyone to set up. If you run into any issu
 ## Implementation
 [Implementation Page](https://github.com/Ceichert31/Game-Reporter/wiki/In%E2%80%90Engine-Implementation)
 
-# ToDo
-- [ ] Setup screenshot support
-- [ ] Setup log file/game state support
-- [ ] Create guide for setting up Render + integration into game
+# To Do
+- [x] Setup screenshot support
+- [x] Setup log file/game state support
+- [x] Create guide for setting up Render
+- [ ] Create guide for in-engine setup
+- [ ] Create video guide covering entire setup
+- [ ] Do some security testing on API endpoint

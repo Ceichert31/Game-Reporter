@@ -9,11 +9,8 @@ Game Reporter is meant to be easy for anyone to set up. If you run into any issu
 2. Setup Render and connect repo
 3. Set Discord webhook URL in environment file
 
-## Hosting
-[Hosting Page](https://github.com/Ceichert31/Game-Reporter/wiki/Hosting)
-
-## Implementation
-[Implementation Page](https://github.com/Ceichert31/Game-Reporter/wiki/In%E2%80%90Engine-Implementation)
+## Wiki
+[Wiki](https://github.com/Ceichert31/Game-Reporter/wiki)
 
 # To Do
 - [x] Setup screenshot support

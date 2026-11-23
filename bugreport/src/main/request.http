@@ -55,7 +55,7 @@ Content-Type: text/plain
 < C:\Repos\bugreport\Bug-Report-Api\bugreport\src\log.txt
 --BugBoundary--
 ###
-POST https://bug-report-api-bmwe.onrender.com/api/report
+POST https://localhost:8080/api/report
 Content-Type: application/json
 
 {

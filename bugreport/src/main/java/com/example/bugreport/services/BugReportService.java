@@ -98,8 +98,8 @@ public class BugReportService {
     /// Stops connections that take too long to send a POST request
     private static SimpleClientHttpRequestFactory timeout() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setConnectTimeout(CONNECTION_TIMEOUT);
-        factory.setReadTimeout(READ_TIMEOUT);
+        factory.setConnectTimeout(Duration.ofSeconds(CONNECTION_TIMEOUT));
+        factory.setReadTimeout(Duration.ofSeconds(READ_TIMEOUT));
         return factory;
     }
 

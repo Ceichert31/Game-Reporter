@@ -13,5 +13,15 @@ public record BugReport(
         @NotBlank @Size(max = 4000) String message,
         Severity severity,
         @Email @Size(max = 256) String email
-) {}
+) {
+    public BugReport {
+        // Verify email
+        if (email == null || email.isBlank()) {
+            email = null;
+        }
+        else {
+            email = email.strip();
+        }
+    }
+}
 

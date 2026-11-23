@@ -1,5 +1,6 @@
 package com.example.bugreport.controllers;
 
+import com.example.bugreport.exceptions.InvalidAttachmentException;
 import com.example.bugreport.records.BugReport;
 import com.example.bugreport.services.BugReportService;
 import jakarta.validation.Valid;
@@ -45,8 +46,8 @@ public class BugReportController {
         return report;
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Map<String, String>> badFile(IllegalArgumentException e) {
+    @ExceptionHandler(InvalidAttachmentException.class)
+    public ResponseEntity<Map<String, String>> badFile(InvalidAttachmentException e) {
         return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
     }
 

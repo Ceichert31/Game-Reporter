@@ -7,6 +7,7 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
@@ -22,12 +24,14 @@ import java.util.*;
 public class BugReportService {
     /// Valid image types
     private static final Set<String> IMAGE_TYPES = Set.of("image/png", "image/jpeg");
-    private final RestClient discord = RestClient.create();
-    private final String webhookUrl;
+    private final RestClient DISCORD_CLIENT = RestClient.builder().requestFactory(timeout()).build();
+    private final String WEB_HOOK_URL;
+    private static final int CONNECTION_TIMEOUT = 5;
+    private static final int READ_TIMEOUT = 15;
 
     public BugReportService(@Value("${discord.webhook-url}") String webhookUrl)
     {
-        this.webhookUrl = webhookUrl;
+        WEB_HOOK_URL = webhookUrl;
     }
 
 
@@ -83,12 +87,20 @@ public class BugReportService {
         // Adds rest of the body to the POST request
         parts.add("payload_json", jsonPart(body));
 
-        discord.post()
-                .uri(webhookUrl + "?wait=true")
+        DISCORD_CLIENT.post()
+                .uri(WEB_HOOK_URL + "?wait=true")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(parts)
                 .retrieve()
                 .toBodilessEntity();
+    }
+
+    /// Stops connections that take too long to send a POST request
+    private static SimpleClientHttpRequestFactory timeout() {
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(CONNECTION_TIMEOUT);
+        factory.setReadTimeout(READ_TIMEOUT);
+        return factory;
     }
 
     /// Builds the Multipart file for images or attachments
